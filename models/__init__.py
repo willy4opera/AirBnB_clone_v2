@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-
-"""Here, we created a unique FileStorage instance for our application"""
-
+"""create a unique FileStorage instance for your application"""
 from models.engine.file_storage import FileStorage
 from models.engine.db_storage import DBStorage
 from models.base_model import BaseModel
