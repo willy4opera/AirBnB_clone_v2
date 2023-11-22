@@ -18,6 +18,7 @@ class test_Amenity(test_basemodel):
     """The test case for the test_basemodel """
 
     def __init__(self, *args, **kwargs):
+
         """ """
         super().__init__(*args, **kwargs)
         self.name = "Amenity"
@@ -138,7 +139,8 @@ class TestAmenity(unittest.TestCase):
         self.assertTrue(hasattr(amenity, "updated_at"))
 
     def test_name_attr(self):
-        """Here, we test that Amenity has attribute name, and it's as an empty string"""
+        """Here, we test that Amenity has attribute name,
+        and it's as an empty string"""
         amenity = Amenity()
         self.assertTrue(hasattr(amenity, "name"))
         if storage_t == 'db':
@@ -147,7 +149,8 @@ class TestAmenity(unittest.TestCase):
             self.assertEqual(amenity.name, "")
 
     def test_to_dict_creates_dict(self):
-        """Here, we test to_dict method creates a dictionary with proper attrs"""
+        """Here, we test to_dict method creates
+        a dictionary with proper attrs"""
         am = Amenity()
         print(am.__dict__)
         new_d = am.to_dict()
@@ -159,7 +162,8 @@ class TestAmenity(unittest.TestCase):
         self.assertTrue("__class__" in new_d)
 
     def test_to_dict_values(self):
-        """Here, we test that values in dict returned from to_dict are correct"""
+        """Here, we test that values in dict
+        returned from to_dict are correct"""
         t_format = "%Y-%m-%dT%H:%M:%S.%f"
         am = Amenity()
         new_d = am.to_dict()

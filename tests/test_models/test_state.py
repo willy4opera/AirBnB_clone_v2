@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-""" """
+
+"""Here, we have defined the unittest case for state class """
+
 from tests.test_models.test_base_model import test_basemodel
 from models.state import State
 
