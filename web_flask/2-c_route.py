@@ -26,10 +26,10 @@ def hbnb():
 
 
 @app.route("/c/<text>", strict_slashes=False)
-def c(txt):
+def c(text):
     """Displays 'C' followed by the value of <text>."""
-    txt = txt.replace("_", " ")
-    return "C {}".format(txt)
+    text = text.replace("_", " ")
+    return "C {}".format(text)
 
 
 if __name__ == "__main__":
