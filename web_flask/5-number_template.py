@@ -9,7 +9,8 @@ Routes:
     /c/<txt>: Shows 'C' followed by the value of <txt>.
     /python/(<txt>): Displays 'Python' followed by the value of <txt>.
     /number/<num>: Displays 'num is a number' only if <n> is an integer.
-    /number_template/<num>: Displays an HTML page only if <num> is an integer.
+    /number_template/<num>: Displays an
+    /HTML page only if <num> is an integer.
 """
 from flask import Flask
 from flask import render_template
