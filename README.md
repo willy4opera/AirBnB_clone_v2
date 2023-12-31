@@ -4,7 +4,7 @@ The content of this repository are initial stage of our ALX_student project Aime
 
 ---
 
-<center><h3>Repository Contents by Project Task</h3> </center>
+<center><h3>Repository Contents</h3> </center>
 
 | Tasks | Files | Description |
 | ----- | ----- | ------ |
