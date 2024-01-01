@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""This is the base model class for AirBnB"""
+
+"""The base model class for AirBnB Project"""
 import uuid
 import models
 from datetime import datetime
@@ -9,7 +10,7 @@ Base = declarative_base()
 
 
 class BaseModel:
-    """This class will defines all common attributes/methods
+    """Here, we defined the class for all common attributes/methods
     for other classes
     Attributes:
         id: primary key, string of 60 chars
@@ -21,13 +22,13 @@ class BaseModel:
     updated_at = Column(DateTime, default=datetime.utcnow(), nullable=False)
 
     def __init__(self, *args, **kwargs):
-        """Instantiation of base model class
+        """Here, we instatiates the base model class
         Args:
-            args: it won't be used
-            kwargs: arguments for the constructor of the BaseModel
+            args: The argd won't be used
+            kwargs: The arguments for constructor of the BaseModel
         Attributes:
-            id: unique id generated
-            created_at: creation date
+            id: generated unique uuid
+            created_at: Date Creation
             updated_at: updated date
         """
         if kwargs:
@@ -61,27 +62,27 @@ class BaseModel:
         return self.__str__()
 
     def save(self):
-        """updates the public instance attribute updated_at to current
+        """Here, we updated the public instance attribute updated_at to current
         """
         self.updated_at = datetime.now()
         models.storage.new(self)
         models.storage.save()
 
     def to_dict(self):
-        """creates dictionary of the class  and returns
+        """Here, we created the dictionary of the class and returns it.
         Return:
             returns a dictionary of all the key values in __dict__
         """
-        my_dict = dict(self.__dict__)
-        my_dict["__class__"] = str(type(self).__name__)
-        my_dict["created_at"] = self.created_at.isoformat()
-        my_dict["updated_at"] = self.updated_at.isoformat()
-        if my_dict.get('_sa_instance_state'):
-            del my_dict['_sa_instance_state']
-        return my_dict
+        dev_dict = dict(self.__dict__)
+        dev_dict["__class__"] = str(type(self).__name__)
+        dev_dict["created_at"] = self.created_at.isoformat()
+        dev_dict["updated_at"] = self.updated_at.isoformat()
+        if dev_dict.get('_sa_instance_state'):
+            del dev_dict['_sa_instance_state']
+        return dev_dict
 
     def delete(self):
-        """delete the current instance from the storage
+        """Here, we delete the current instance from the storage
         using file storage instance method delete
         """
         models.storage.delete(self)
