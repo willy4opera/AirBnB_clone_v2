@@ -11,14 +11,13 @@ app = Flask(__name__)
 
 @app.teardown_appcontext
 def shutdown_session(exception=None):
-    """Here, we reloaded storage after each request
+    """Here, we reploaded storage after each request
     """
     storage.close()
 
 
 @app.route("/states/<id>", strict_slashes=False)
 @app.route("/states", strict_slashes=False)
-
 def states_cities_list(id=None):
     """Here, we display state and cities if id is given
     otherwise list all states
