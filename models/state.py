@@ -1,37 +1,31 @@
 #!/usr/bin/python3
-
-"""The state class"""
-
-from sqlalchemy.ext.declarative import declarative_base
+"""This is the state class"""
 from models.base_model import BaseModel, Base
+from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
-from sqlalchemy import Column, Integer, String
+from os import environ as env
 import models
-from models.city import City
-import shlex
 
 
 class State(BaseModel, Base):
-    """The class for State
+    """This is the class for State
     Attributes:
+        __tablename__: table name
         name: input name
+        cities: relation to cities table
     """
     __tablename__ = "states"
     name = Column(String(128), nullable=False)
-    cities = relationship("City", cascade='all, delete, delete-orphan',
-                          backref="state")
+    cities = relationship("City", cascade="all, delete", backref="state")
 
-    @property
-    def cities(self):
-        dev_var = models.storage.all()
-        dev_lst = []
-        solution = []
-        for key in dev_var:
-            city = key.replace('.', ' ')
-            city = shlex.split(city)
-            if (city[0] == 'City'):
-                dev_lst.append(dev_var[key])
-        for elem in dev_lst:
-            if (elem.state_id == self.id):
-                solution.append(elem)
-        return (solution)
+    if env.get('HBNB_TYPE_STORAGE') != 'db':
+        @property
+        def cities(self):
+            """get all cities with the current state id
+            from filestorage
+            """
+            l = [
+                v for k, v in models.storage.all(models.City).items()
+                if v.state_id == self.id
+            ]
+            return (l)
