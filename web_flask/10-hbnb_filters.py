@@ -25,11 +25,12 @@ def states_cities_list():
         state.cities.sort(key=lambda x: x.name)
     amenities = list(storage.all("Amenity").values())
     amenities.sort(key=lambda x: x.name)
-    return render_template(
+    Temp_render = render_template(
         '10-hbnb_filters.html',
         states=d_states,
         amenities=amenities
     )
+    return Temp_render
 
 
 if __name__ == "__main__":
