@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-
-"""Here, we defined the place class"""
-
+"""This is the place class"""
 from sqlalchemy.ext.declarative import declarative_base
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, Table, String, Integer, Float, ForeignKey
@@ -61,17 +59,17 @@ class Place(BaseModel, Base):
         def reviews(self):
             """ Returns list of reviews.id """
             var = models.storage.all()
-            dev_list = []
-            product = []
+            lista = []
+            result = []
             for key in var:
                 review = key.replace('.', ' ')
                 review = shlex.split(review)
                 if (review[0] == 'Review'):
-                    dev_list.append(var[key])
-            for element in dev_list:
-                if (element.place_id == self.id):
-                    product.append(element)
-            return (product)
+                    lista.append(var[key])
+            for elem in lista:
+                if (elem.place_id == self.id):
+                    result.append(elem)
+            return (result)
 
         @property
         def amenities(self):

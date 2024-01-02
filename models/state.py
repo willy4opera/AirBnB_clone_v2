@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-
-"""Here, we defines the state class"""
-
+"""This is the state class"""
 from sqlalchemy.ext.declarative import declarative_base
 from models.base_model import BaseModel, Base
 from sqlalchemy.orm import relationship
@@ -23,15 +21,15 @@ class State(BaseModel, Base):
 
     @property
     def cities(self):
-        d_var = models.storage.all()
-        dev_list = []
-        product = []
-        for key in d_var:
+        var = models.storage.all()
+        lista = []
+        result = []
+        for key in var:
             city = key.replace('.', ' ')
             city = shlex.split(city)
             if (city[0] == 'City'):
-                dev_list.append(d_var[key])
-        for elem in dev_list:
+                lista.append(var[key])
+        for elem in lista:
             if (elem.state_id == self.id):
-                product.append(elem)
-        return (product)
+                result.append(elem)
+        return (result)
