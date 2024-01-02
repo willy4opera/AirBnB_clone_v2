@@ -1,6 +1,8 @@
 #!/usr/bin/python3
-"""The simple flask app
+
+"""Here, we started the simple flask app
 """
+
 from flask import Flask, render_template
 from models import storage
 app = Flask(__name__)
@@ -15,11 +17,12 @@ def shutdown_session(exception=None):
 
 @app.route("/states_list", strict_slashes=False)
 def states_list():
-    """Here, we list states sorted by name
+    """list states sorted by name
     """
     d_states = list(storage.all("State").values())
     d_states.sort(key=lambda x: x.name)
-    return render_template('7-states_list.html', states=d_states)
+    Text = render_template('7-states_list.html', states=d_states)
+    return Text
 
 
 if __name__ == "__main__":
