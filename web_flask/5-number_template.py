@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""simple flask app
+
+"""Here, we defined the simple flask app
 """
 from flask import Flask
 from flask import render_template
@@ -8,7 +9,7 @@ app = Flask(__name__)
 
 @app.route("/", strict_slashes=False)
 def hello_hbnb():
-    """root route
+    """Here, we defined the root route
     """
     return "Hello HBNB!"
 
@@ -24,7 +25,8 @@ def hbnb():
 def cisfun(text):
     """c what
     """
-    return "C {}".format(text.replace('_', ' '))
+    Text = "C {}".format(text.replace('_', ' '))
+    return Text
 
 
 @app.route("/python/", strict_slashes=False)
@@ -32,21 +34,25 @@ def cisfun(text):
 def pythoniscool(text='is cool'):
     """python is cool
     """
-    return "Python {}".format(text.replace('_', ' '))
+    Text = "Python {}".format(text.replace('_', ' '))
+    return Text
 
 
 @app.route("/number/<int:n>", strict_slashes=False)
 def intnumber(n):
     """accept integer
     """
-    return "{} is a number".format(n)
+    Text = "{} is a number".format(n)
+    return Text
 
 
 @app.route("/number_template/<int:n>", strict_slashes=False)
 def int_template(n):
     """only display when n is integer
     """
-    return render_template('5-number.html', number=n)
+    Text = render_template('5-number.html', number=n)
+    return Text
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
